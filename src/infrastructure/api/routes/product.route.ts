@@ -14,8 +14,7 @@ productRoute.post("/", async (req: Request, res: Response) => {
       name: req.body.name,
       price: req.body.price,
       };
-      console.log(productDto);
-    const output = await usecase.execute(productDto);
+      const output = await usecase.execute(productDto);
     res.send(output);
   } catch (err) {
     res.status(500).send(err);
