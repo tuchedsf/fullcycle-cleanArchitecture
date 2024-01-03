@@ -1,5 +1,6 @@
 import Entity from "../../@shared/entity/entity.abstract";
 import NotificationError from "../../@shared/notification/notification.error";
+import ProductValidatorFactory from "../factory/product.validator.factory";
 import ProductInterface from "./product.interface";
 
 export default class Product extends Entity implements ProductInterface {
@@ -39,28 +40,29 @@ export default class Product extends Entity implements ProductInterface {
     this.validate();
   }
 
-  validate(): boolean {
-    if (this._id.length === 0) {
-      //throw new Error("Id is required");
-      this.notification.addError({
-        message: "Id is required",
-        context: "product",
-      });
-    }
-    if (this._name.length === 0) {
-       //throw new Error("Name is required");
-        this.notification.addError({
-          message: "Name is required",
-          context: "product",
-        });
-    }
-    if (this._price < 0) {
-       //throw new Error("Price must be greater than zero");
-       this.notification.addError({
-         message: "Price must be greater than zero",
-         context: "product",
-       });
-    }
-    return true;
+  validate() {
+    ProductValidatorFactory.create().validate(this)
+    // if (this._id.length === 0) {
+    //   //throw new Error("Id is required");
+    //   this.notification.addError({
+    //     message: "Id is required",
+    //     context: "product",
+    //   });
+    // }
+    // if (this._name.length === 0) {
+    //    //throw new Error("Name is required");
+    //     this.notification.addError({
+    //       message: "Name is required",
+    //       context: "product",
+    //     });
+    // }
+    // if (this._price < 0) {
+    //    //throw new Error("Price must be greater than zero");
+    //    this.notification.addError({
+    //      message: "Price must be greater than zero",
+    //      context: "product",
+    //    });
+    // }
+    // return true;
   }
 }
