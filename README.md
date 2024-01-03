@@ -13,3 +13,5 @@ A base do projeto foi importada do [https://github.com/devfullcycle/fc-clean-arc
 30/12 - Desafio 4: Validator - Product
 
 03/01 - Desafio 4: validator -> Correção validações via yup
+
+03/01 - Desafio 1: UseCase -> Correção integration tests Create / List / Update Product
